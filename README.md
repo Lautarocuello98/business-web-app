@@ -1,96 +1,206 @@
 # Business Workflow Manager
 
-Aplicacion web interna construida con Django para centralizar operaciones de una pyme:
+> Professional internal business workflow web app built with Django, Bootstrap, and SQLite.
 
-- clientes
-- trabajos/pedidos
-- estados y prioridades
-- fechas limite
-- notas operativas
-- resumen en dashboard
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
+[![Django 5](https://img.shields.io/badge/django-5.x-0c4b33.svg)](https://www.djangoproject.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Tests: Django](https://img.shields.io/badge/tests-django-green.svg)](#quality-checks)
 
-## Stack
+---
 
-- Python
-- Django
-- SQLite (desarrollo)
-- Bootstrap 5 + HTML/CSS
+# Overview
 
-## Funcionalidades
+Business Workflow Manager is a lightweight internal platform to manage:
 
-- Autenticacion (`login/logout`) con vistas protegidas.
-- Dashboard con metricas clave:
-  - total de clientes
-  - total de trabajos
-  - trabajos pendientes
-  - trabajos completados
-  - vencimientos proximos
-  - distribucion por estado
-- CRUD completo de clientes.
-- CRUD completo de trabajos/pedidos/tareas.
-- Filtros y busqueda en trabajos por:
-  - texto
-  - estado
-  - prioridad
-  - cliente
-- Exportacion de clientes y trabajos a CSV.
-- Paginacion en listados.
-- Mensajes de exito/error para feedback de acciones.
-- Django admin para gestion rapida.
+- client records
+- operational jobs/tasks
+- priorities and status tracking
+- due dates and internal notes
+- dashboard metrics for decision support
 
-## Estructura
+The project is designed as a clean portfolio-ready Django application with authentication, protected routes, and practical business CRUD flows.
+
+---
+
+# Features
+
+| Feature | Description |
+|-------|-------------|
+| Authentication | Login/logout with protected views |
+| Dashboard Metrics | Total clients, total jobs, pending/completed jobs, upcoming deadlines, jobs by status |
+| Client Management | Full CRUD for clients with search and pagination |
+| Job Management | Full CRUD for jobs with status/priority and due dates |
+| Advanced Job Filters | Filter by text, status, priority, and client |
+| CSV Export | Export clients and jobs list views to CSV |
+| Overdue Highlighting | Visual alert for overdue non-completed jobs |
+| Admin Console | Django admin with search, filters, and autocomplete |
+
+---
+
+# Architecture
 
 ```text
 business-web-app/
-  config/
-  core/
-  clients/
-  jobs/
-  users/
+  config/                            # Project settings and root routing
+    settings.py
+    urls.py
+
+  core/                              # Home and dashboard
+    views.py
+    templates/core/
+      home.html
+      dashboard.html
+
+  clients/                           # Client domain
+    models.py
+    forms.py
+    views.py
+    urls.py
+    admin.py
+    templates/clients/
+      client_list.html
+      client_detail.html
+      client_form.html
+      client_confirm_delete.html
+
+  jobs/                              # Job/task domain
+    models.py
+    forms.py
+    views.py
+    urls.py
+    admin.py
+    templates/jobs/
+      job_list.html
+      job_detail.html
+      job_form.html
+      job_confirm_delete.html
+
+  users/                             # Authentication routes/forms
+    forms.py
+    urls.py
+    templates/registration/
+      login.html
+      logged_out.html
+
   templates/
+    base.html                        # Shared layout and navbar
+
   static/
+    css/styles.css
+    js/app.js
+
+  manage.py
+  requirements.txt
+  README.md
+  LICENSE
 ```
 
-## Puesta en marcha
+---
 
-1. Crear entorno virtual.
-2. Instalar dependencias:
+# Access Model
+
+The app currently uses Django standard access levels:
+
+- Anonymous user: home + login only
+- Authenticated user: dashboard + clients + jobs modules
+- Admin (`is_staff`/`superuser`): Django admin panel access
+
+---
+
+# Setup
+
+1. Clone repository:
+
+```bash
+git clone https://github.com/Lautarocuello98/business-web-app.git
+cd business-web-app
+```
+
+2. Create and activate virtual environment:
+
+```bash
+python -m venv .venv
+# Windows PowerShell:
+.\.venv\Scripts\Activate.ps1
+# Linux/macOS:
+source .venv/bin/activate
+```
+
+3. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Aplicar migraciones:
+4. Run migrations:
 
 ```bash
 python manage.py migrate
 ```
 
-4. Crear superusuario:
+5. Create admin user:
 
 ```bash
 python manage.py createsuperuser
 ```
 
-5. Ejecutar servidor:
+6. Start development server:
 
 ```bash
 python manage.py runserver
 ```
 
-6. Ejecutar tests:
+---
+
+# App Routes
+
+- Home: `/`
+- Dashboard: `/dashboard/`
+- Clients: `/clients/`
+- Jobs: `/jobs/`
+- Login: `/users/login/`
+- Logout: `/users/logout/`
+- Admin: `/admin/`
+
+---
+
+# Quality Checks
+
+Current automated checks used in this repository:
 
 ```bash
+python manage.py check
 python manage.py test
 ```
 
-## Credenciales y acceso
+Latest local run result:
 
-- Login: `/users/login/`
-- Dashboard: `/dashboard/`
-- Admin: `/admin/`
+- `System check identified no issues (0 silenced).`
+- `Ran 7 tests ... OK`
 
-## Notas
+---
 
-- Proyecto pensado como base profesional para portfolio y evolucion real en negocio.
-- Para produccion, configurar variables de entorno (`DJANGO_SECRET_KEY`, hosts permitidos, DB, etc).
+# Tech Stack
+
+- Python 3.10+
+- Django 5.x
+- SQLite (dev database)
+- Bootstrap 5
+- HTML/CSS + Django Templates
+
+---
+
+# Author
+
+**Lautaro Cuello**
+
+GitHub:
+https://github.com/Lautarocuello98
+
+---
+
+# License
+
+This project is licensed under the MIT License.
+See the [LICENSE](LICENSE) file for details.
