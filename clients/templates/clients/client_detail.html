@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Client Detail{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">{{ client.name }}</h1>
+    <div class="d-flex gap-2">
+        <a href="{% url 'clients:client_update' client.pk %}" class="btn btn-outline-primary">Edit</a>
+        <a href="{% url 'clients:client_delete' client.pk %}" class="btn btn-outline-danger">Delete</a>
+    </div>
+</div>
+
+<div class="row g-3">
+    <div class="col-lg-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white">
+                <h2 class="h6 mb-0">Client Information</h2>
+            </div>
+            <div class="card-body">
+                <p><strong>Company:</strong> {{ client.company|default:"-" }}</p>
+                <p><strong>Email:</strong> {{ client.email|default:"-" }}</p>
+                <p><strong>Phone:</strong> {{ client.phone|default:"-" }}</p>
+                <p class="mb-1"><strong>Notes:</strong></p>
+                <p class="text-muted mb-0">{{ client.notes|default:"No notes."|linebreaksbr }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white">
+                <h2 class="h6 mb-0">Recent Jobs</h2>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-sm align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Status</th>
+                                <th>Priority</th>
+                                <th>Due Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for job in recent_jobs %}
+                            <tr>
+                                <td><a href="{% url 'jobs:job_detail' job.pk %}">{{ job.title }}</a></td>
+                                <td><span class="badge status-{{ job.status }}">{{ job.get_status_display }}</span></td>
+                                <td><span class="badge priority-{{ job.priority }}">{{ job.get_priority_display }}</span></td>
+                                <td>{{ job.due_date|date:"Y-m-d"|default:"-" }}</td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="4" class="text-muted">No jobs assigned yet.</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="{% url 'clients:client_list' %}" class="btn btn-link mt-3 ps-0">Back to clients</a>
+{% endblock %}
+

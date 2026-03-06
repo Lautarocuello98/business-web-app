@@ -1,0 +1,53 @@
+body {
+    background-color: #f5f7fb;
+}
+
+.stat-card {
+    border-left: 4px solid #0d6efd;
+}
+
+.status-pending {
+    background-color: #fff3cd;
+    color: #664d03;
+}
+
+.status-in_progress {
+    background-color: #cff4fc;
+    color: #055160;
+}
+
+.status-completed {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.status-on_hold {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.priority-low {
+    background-color: #e2e3e5;
+    color: #41464b;
+}
+
+.priority-medium {
+    background-color: #cfe2ff;
+    color: #084298;
+}
+
+.priority-high {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.priority-urgent {
+    background-color: #212529;
+    color: #ffffff;
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
+}
+

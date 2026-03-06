@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Business Workflow Manager{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-5 text-center">
+                <h1 class="display-6 fw-bold mb-3">Business Workflow Manager</h1>
+                <p class="lead text-muted mb-4">
+                    Herramienta interna para centralizar clientes, trabajos y estados operativos.
+                </p>
+                <a href="{% url 'users:login' %}" class="btn btn-primary btn-lg">Ingresar</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Job Detail{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">{{ job.title }}</h1>
+    <div class="d-flex gap-2">
+        <a href="{% url 'jobs:job_update' job.pk %}" class="btn btn-outline-primary">Edit</a>
+        <a href="{% url 'jobs:job_delete' job.pk %}" class="btn btn-outline-danger">Delete</a>
+    </div>
+</div>
+
+<div class="row g-3">
+    <div class="col-lg-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white">
+                <h2 class="h6 mb-0">General</h2>
+            </div>
+            <div class="card-body">
+                <p><strong>Client:</strong> <a href="{% url 'clients:client_detail' job.client.pk %}">{{ job.client.name }}</a></p>
+                <p><strong>Status:</strong> <span class="badge status-{{ job.status }}">{{ job.get_status_display }}</span></p>
+                <p><strong>Priority:</strong> <span class="badge priority-{{ job.priority }}">{{ job.get_priority_display }}</span></p>
+                <p><strong>Due date:</strong> {{ job.due_date|date:"Y-m-d"|default:"-" }}</p>
+                <p class="mb-0"><strong>Overdue:</strong> {% if job.is_overdue %}Yes{% else %}No{% endif %}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="card shadow-sm border-0 mb-3">
+            <div class="card-header bg-white">
+                <h2 class="h6 mb-0">Description</h2>
+            </div>
+            <div class="card-body">
+                <p class="mb-0">{{ job.description|default:"No description."|linebreaksbr }}</p>
+            </div>
+        </div>
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white">
+                <h2 class="h6 mb-0">Internal Notes</h2>
+            </div>
+            <div class="card-body">
+                <p class="mb-0">{{ job.internal_notes|default:"No internal notes."|linebreaksbr }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="{% url 'jobs:job_list' %}" class="btn btn-link mt-3 ps-0">Back to jobs</a>
+{% endblock %}
+
