@@ -41,58 +41,85 @@ The project is designed as a clean portfolio-ready Django application with authe
 
 ```text
 business-web-app/
-  config/                            # Project settings and root routing
-    settings.py
-    urls.py
-
-  core/                              # Home and dashboard
-    views.py
-    templates/core/
-      home.html
-      dashboard.html
-
-  clients/                           # Client domain
-    models.py
-    forms.py
-    views.py
-    urls.py
-    admin.py
-    templates/clients/
-      client_list.html
-      client_detail.html
-      client_form.html
-      client_confirm_delete.html
-
-  jobs/                              # Job/task domain
-    models.py
-    forms.py
-    views.py
-    urls.py
-    admin.py
-    templates/jobs/
-      job_list.html
-      job_detail.html
-      job_form.html
-      job_confirm_delete.html
-
-  users/                             # Authentication routes/forms
-    forms.py
-    urls.py
-    templates/registration/
-      login.html
-      logged_out.html
-
-  templates/
-    base.html                        # Shared layout and navbar
-
-  static/
-    css/styles.css
-    js/app.js
-
-  manage.py
-  requirements.txt
-  README.md
-  LICENSE
+|-- config/                          # Project settings and root routing
+|   |-- __init__.py
+|   |-- asgi.py
+|   |-- settings.py
+|   |-- urls.py
+|   `-- wsgi.py
+|
+|-- core/                            # Home and dashboard
+|   |-- __init__.py
+|   |-- apps.py
+|   |-- urls.py
+|   |-- views.py
+|   `-- templates/
+|       `-- core/
+|           |-- dashboard.html
+|           `-- home.html
+|
+|-- clients/                         # Client domain
+|   |-- __init__.py
+|   |-- admin.py
+|   |-- apps.py
+|   |-- forms.py
+|   |-- models.py
+|   |-- urls.py
+|   |-- views.py
+|   |-- tests.py
+|   |-- migrations/
+|   |   |-- 0001_initial.py
+|   |   `-- __init__.py
+|   `-- templates/
+|       `-- clients/
+|           |-- client_confirm_delete.html
+|           |-- client_detail.html
+|           |-- client_form.html
+|           `-- client_list.html
+|
+|-- jobs/                            # Job/task domain
+|   |-- __init__.py
+|   |-- admin.py
+|   |-- apps.py
+|   |-- forms.py
+|   |-- models.py
+|   |-- urls.py
+|   |-- views.py
+|   |-- tests.py
+|   |-- migrations/
+|   |   |-- 0001_initial.py
+|   |   `-- __init__.py
+|   `-- templates/
+|       `-- jobs/
+|           |-- job_confirm_delete.html
+|           |-- job_detail.html
+|           |-- job_form.html
+|           `-- job_list.html
+|
+|-- users/                           # Authentication routes/forms
+|   |-- __init__.py
+|   |-- apps.py
+|   |-- forms.py
+|   |-- urls.py
+|   `-- templates/
+|       `-- registration/
+|           |-- logged_out.html
+|           `-- login.html
+|
+|-- templates/
+|   `-- base.html                    # Shared layout and navbar
+|
+|-- static/
+|   |-- css/
+|   |   `-- styles.css
+|   `-- js/
+|       `-- app.js
+|
+|-- .gitignore
+|-- LICENSE
+|-- manage.py
+|-- README.md
+`-- requirements.txt
 ```
 
 ---

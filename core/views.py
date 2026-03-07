@@ -22,7 +22,7 @@ def dashboard(request):
 
     total_clients = Client.objects.count()
     total_jobs = Job.objects.count()
-    pending_jobs = Job.objects.exclude(status=Job.Status.COMPLETED).count()
+    pending_jobs = Job.objects.filter(status=Job.Status.PENDING).count()
     completed_jobs = Job.objects.filter(status=Job.Status.COMPLETED).count()
 
     upcoming_deadlines = (
@@ -52,4 +52,3 @@ def dashboard(request):
         "jobs_by_status": jobs_by_status,
     }
     return render(request, "core/dashboard.html", context)
-

@@ -21,7 +21,9 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'core:dashboard' %}">Dashboard</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'clients:client_list' %}">Clients</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'jobs:job_list' %}">Jobs</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/admin/">Admin</a></li>
+                        {% if user.is_staff %}
+                            <li class="nav-item"><a class="nav-link" href="/admin/">Admin</a></li>
+                        {% endif %}
                     </ul>
                     <div class="d-flex align-items-center gap-3">
                         <span class="navbar-text small">{{ user.username }}</span>
