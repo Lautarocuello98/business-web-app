@@ -1,232 +1,273 @@
-# Business Workflow Manager
+# 🏢 Business Web Manager
 
-> Professional internal business workflow web app built with Django, Bootstrap, and SQLite.
+> Django web application for managing internal business workflows including clients, jobs, priorities, and operational metrics.
 
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
-[![Django 5](https://img.shields.io/badge/django-5.x-0c4b33.svg)](https://www.djangoproject.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
----
-
-# Overview
-
-Business Workflow Manager is a lightweight internal platform to manage:
-
-- client records
-- operational jobs/tasks
-- priorities and status tracking
-- due dates and internal notes
-- dashboard metrics for decision support
-
-The project is designed as a clean portfolio-ready Django application with authentication, protected routes, and practical business CRUD flows.
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)  
+[![Django 5.x](https://img.shields.io/badge/django-5.x-0c4b33.svg)](https://www.djangoproject.com/)  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)  
 
 ---
 
-# Features
+## ✨ Overview
+
+Business Web Manager is a Django-based web application designed to manage internal operational workflows for small teams or businesses.
+
+The platform centralizes **client records, job management, task priorities, and operational tracking** in a single dashboard interface.
+
+Users can create and manage clients, assign jobs with priorities and due dates, track status, and monitor operational metrics through a clean dashboard.
+
+The project demonstrates practical web development patterns commonly used in real-world business applications, including:
+
+- modular Django app architecture
+- authentication and protected routes
+- CRUD-based business workflows
+- server-side filtering and search
+- CSV data export
+- dashboard metrics for operational visibility
+
+It is designed as a **portfolio-ready Django application demonstrating real internal business software workflows**.
+
+---
+
+## ⚡ Quick Start
+
+Clone the repository:
+
+    git clone https://github.com/Lautarocuello98/business-web-app.git
+
+Move into the project directory:
+
+    cd business-web-app
+
+Create a virtual environment:
+
+    python -m venv .venv
+
+Activate the virtual environment (PowerShell):
+
+    .\.venv\Scripts\Activate.ps1
+
+Install dependencies:
+
+    pip install -r requirements.txt
+
+Run database migrations:
+
+    python manage.py migrate
+
+Create an admin user:
+
+    python manage.py createsuperuser
+
+Start the development server:
+
+    python manage.py runserver
+
+Open in your browser:
+
+    http://127.0.0.1:8000/
+
+---
+
+## 📸 Example
+
+![Start](images/screenshot.png)
+
+### 📊 Dashboard
+
+Central dashboard displaying operational metrics such as total clients, job counts, and upcoming deadlines.
+
+---
+
+### 👥 Client Management
+
+Clients can be created, edited, searched, and deleted through a clean CRUD interface.
+
+---
+
+### 📋 Job Management
+
+Jobs are linked to clients and include:
+
+- title
+- status
+- priority
+- due date
+- description
+- internal notes
+
+Overdue jobs are visually highlighted when not completed.
+
+---
+
+## 🚀 Features
 
 | Feature | Description |
 |-------|-------------|
-| Authentication | Login/logout with protected views |
-| Dashboard Metrics | Total clients, total jobs, pending/completed jobs, upcoming deadlines, jobs by status |
-| Client Management | Full CRUD for clients with search and pagination |
-| Job Management | Full CRUD for jobs with status/priority and due dates |
-| Advanced Job Filters | Filter by text, status, priority, and client |
-| CSV Export | Export clients and jobs list views to CSV |
-| Overdue Highlighting | Visual alert for overdue non-completed jobs |
-| Admin Console | Django admin with search, filters, and autocomplete |
+| Authentication | Login/logout with protected routes |
+| Dashboard Metrics | Overview of clients, jobs, and operational statistics |
+| Client Management | Full CRUD operations with search and pagination |
+| Job Management | Full CRUD with status, priority, and due dates |
+| Job Filtering | Filter jobs by text, status, priority, or client |
+| CSV Export | Export filtered client and job lists to CSV |
+| Overdue Highlighting | Visual alert for overdue jobs |
+| Admin Console | Django admin with search and filtering |
 
 ---
 
-# Architecture
+## 🏗 Architecture
 
-```text
-business-web-app/
-|-- config/                          # Project settings and root routing
-|   |-- __init__.py
-|   |-- asgi.py
-|   |-- settings.py
-|   |-- urls.py
-|   `-- wsgi.py
-|
-|-- core/                            # Home and dashboard
-|   |-- __init__.py
-|   |-- apps.py
-|   |-- urls.py
-|   |-- views.py
-|   `-- templates/
-|       `-- core/
-|           |-- dashboard.html
-|           `-- home.html
-|
-|-- clients/                         # Client domain
-|   |-- __init__.py
-|   |-- admin.py
-|   |-- apps.py
-|   |-- forms.py
-|   |-- models.py
-|   |-- urls.py
-|   |-- views.py
-|   |-- tests.py
-|   |-- migrations/
-|   |   |-- 0001_initial.py
-|   |   `-- __init__.py
-|   `-- templates/
-|       `-- clients/
-|           |-- client_confirm_delete.html
-|           |-- client_detail.html
-|           |-- client_form.html
-|           `-- client_list.html
-|
-|-- jobs/                            # Job/task domain
-|   |-- __init__.py
-|   |-- admin.py
-|   |-- apps.py
-|   |-- forms.py
-|   |-- models.py
-|   |-- urls.py
-|   |-- views.py
-|   |-- tests.py
-|   |-- migrations/
-|   |   |-- 0001_initial.py
-|   |   `-- __init__.py
-|   `-- templates/
-|       `-- jobs/
-|           |-- job_confirm_delete.html
-|           |-- job_detail.html
-|           |-- job_form.html
-|           `-- job_list.html
-|
-|-- users/                           # Authentication routes/forms
-|   |-- __init__.py
-|   |-- apps.py
-|   |-- forms.py
-|   |-- urls.py
-|   `-- templates/
-|       `-- registration/
-|           |-- logged_out.html
-|           `-- login.html
-|
-|-- templates/
-|   `-- base.html                    # Shared layout and navbar
-|
-|-- static/
-|   |-- css/
-|   |   `-- styles.css
-|   `-- js/
-|       `-- app.js
-|
-|-- .gitignore
-|-- LICENSE
-|-- manage.py
-|-- README.md
-`-- requirements.txt
-```
+### Application Structure
+
+    business-web-app/
+    |
+    |-- config/                          # Project configuration and root routing
+    |   |-- __init__.py
+    |   |-- asgi.py
+    |   |-- settings.py
+    |   |-- urls.py
+    |   `-- wsgi.py
+    |
+    |-- core/                            # Home and dashboard views
+    |   |-- views.py
+    |   |-- urls.py
+    |   `-- templates/core/
+    |
+    |-- clients/                         # Client management module
+    |   |-- models.py
+    |   |-- views.py
+    |   |-- forms.py
+    |   |-- admin.py
+    |   |-- urls.py
+    |   `-- templates/clients/
+    |
+    |-- jobs/                            # Job/task management module
+    |   |-- models.py
+    |   |-- views.py
+    |   |-- forms.py
+    |   |-- admin.py
+    |   |-- urls.py
+    |   `-- templates/jobs/
+    |
+    |-- users/                           # Authentication routes
+    |   |-- forms.py
+    |   |-- urls.py
+    |   `-- templates/registration/
+    |
+    |-- templates/
+    |   `-- base.html                    # Shared layout
+    |
+    |-- static/
+    |   |-- css/
+    |   `-- js/
+    |
+    |-- manage.py
+    |-- requirements.txt
+    |-- LICENSE
+    `-- README.md
 
 ---
 
-# Access Model
+### Application Modules
 
-The app currently uses Django standard access levels:
+The project is organized using a modular Django structure.
 
-- Anonymous user: home + login only
-- Authenticated user: dashboard + clients + jobs modules
-- Admin (`is_staff`/`superuser`): Django admin panel access
+**core**
 
----
+- dashboard views
+- homepage
 
-# Setup
+**clients**
 
-1. Clone repository:
+- client data model
+- client CRUD operations
+- search and pagination
 
-```bash
-git clone https://github.com/Lautarocuello98/business-web-app.git
-cd business-web-app
-```
+**jobs**
 
-2. Create and activate virtual environment:
+- job/task management
+- priority and status tracking
+- due date management
+- job filtering
 
-```bash
-python -m venv .venv
-# Windows PowerShell:
-.\.venv\Scripts\Activate.ps1
-# Linux/macOS:
-source .venv/bin/activate
-```
+**users**
 
-3. Install dependencies:
+- authentication routes
+- login/logout templates
 
-```bash
-pip install -r requirements.txt
-```
-
-4. Run migrations:
-
-```bash
-python manage.py migrate
-```
-
-5. Create admin user:
-
-```bash
-python manage.py createsuperuser
-```
-
-6. Start development server:
-
-```bash
-python manage.py runserver
-```
+This modular architecture keeps **business domains isolated**, improving maintainability and scalability.
 
 ---
 
-# App Routes
+## 📁 Project Structure
 
-- Home: `/`
-- Dashboard: `/dashboard/`
-- Clients: `/clients/`
-- Jobs: `/jobs/`
-- Login: `/users/login/`
-- Logout: `/users/logout/`
-- Admin: `/admin/`
-
----
-
-# Quality Checks
-
-Current automated checks used in this repository:
-
-```bash
-python manage.py check
-python manage.py test
-```
-
-Latest local run result:
-
-- `System check identified no issues (0 silenced).`
-- `Ran 7 tests ... OK`
+    business-web-app/
+    |
+    |-- config/
+    |-- core/
+    |-- clients/
+    |-- jobs/
+    |-- users/
+    |
+    |-- templates/
+    |-- static/
+    |
+    |-- manage.py
+    |-- requirements.txt
+    |-- LICENSE
+    `-- README.md
 
 ---
 
-# Tech Stack
+## ▶️ Usage
 
-- Python 3.10+
-- Django 5.x
-- SQLite (dev database)
+Run the development server:
+
+    python manage.py runserver
+
+Create a superuser:
+
+    python manage.py createsuperuser
+
+Run tests:
+
+    python manage.py test
+
+Check project configuration:
+
+    python manage.py check
+
+---
+
+## 🧰 Tech Stack
+
+- Python
+- Django
+- SQLite
 - Bootstrap 5
-- HTML/CSS + Django Templates
+- HTML / CSS
+- Django Templates
 
 ---
 
-# Author
+## 📄 License
 
-**Lautaro Cuello**
+This project is licensed under the **MIT License**.
 
-GitHub:
+See LICENSE for details.
+
+---
+
+## 👨‍💻 Author
+
+Lautaro Cuello
+
+GitHub  
 https://github.com/Lautarocuello98
 
+LinkedIn  
+https://www.linkedin.com/in/lautaro-cuello-7ba4063a3/
+
 ---
 
-# License
-
-This project is licensed under the MIT License.
-See the [LICENSE](LICENSE) file for details.
+⭐ If you found this project useful, consider giving the repository a star.
