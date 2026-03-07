@@ -5,7 +5,6 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![Django 5](https://img.shields.io/badge/django-5.x-0c4b33.svg)](https://www.djangoproject.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Tests: Django](https://img.shields.io/badge/tests-django-green.svg)](#quality-checks)
 
 ---
 
