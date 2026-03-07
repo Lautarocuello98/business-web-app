@@ -10,11 +10,9 @@
 
 ## ✨ Overview
 
-Business Web Manager is a Django-based web application designed to manage internal operational workflows for small teams or businesses.
+Business Web Manager is a Django-based web application designed to manage internal operational workflows for small teams and businesses.
 
-The platform centralizes **client records, job management, task priorities, and operational tracking** in a single dashboard interface.
-
-Users can create and manage clients, assign jobs with priorities and due dates, track status, and monitor operational metrics through a clean dashboard.
+The platform centralizes **client management, job tracking, task prioritization, and operational metrics** within a single dashboard interface. Users can create and manage clients, assign jobs with priorities and due dates, track job status, and monitor operational activity from a unified control panel.
 
 The project demonstrates practical web development patterns commonly used in real-world business applications, including:
 
@@ -25,7 +23,7 @@ The project demonstrates practical web development patterns commonly used in rea
 - CSV data export
 - dashboard metrics for operational visibility
 
-It is designed as a **portfolio-ready Django application demonstrating real internal business software workflows**.
+This repository is designed as a **portfolio-ready Django application that models real internal business software workflows**.
 
 ---
 
@@ -212,26 +210,6 @@ This modular architecture keeps **business domains isolated**, improving maintai
 
 ---
 
-## 📁 Project Structure
-
-    business-web-app/
-    |
-    |-- config/
-    |-- core/
-    |-- clients/
-    |-- jobs/
-    |-- users/
-    |
-    |-- templates/
-    |-- static/
-    |
-    |-- manage.py
-    |-- requirements.txt
-    |-- LICENSE
-    `-- README.md
-
----
-
 ## ▶️ Usage
 
 Run the development server:
@@ -249,6 +227,18 @@ Run tests:
 Check project configuration:
 
     python manage.py check
+
+---
+
+## 🧠 Key Concepts Demonstrated
+
+- Modular Django application architecture
+- Class-based views for CRUD operations
+- Server-side filtering and search
+- Relational data modeling with Django ORM
+- Authentication and protected views
+- Exporting data to CSV
+- Clean separation of business domains
 
 ---
 
