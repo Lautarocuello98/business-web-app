@@ -29,6 +29,49 @@ It is designed as a **portfolio-ready Django application demonstrating real inte
 
 ---
 
+# 🎬 Demo
+
+A quick overview of how the system works.
+
+https://youtu.be/yuOwXCc5wq4
+
+---
+
+## 📸 Example
+
+![Start](images/screenshot.png)
+
+### 📊 Dashboard
+
+Central dashboard displaying operational metrics such as total clients, job counts, and upcoming deadlines.
+
+---
+
+![Start](images/screenshot3.png)
+
+### 👥 Client Management
+
+Clients can be created, edited, searched, and deleted through a clean CRUD interface.
+
+---
+
+![Start](images/screenshot2.png)
+
+### 📋 Job Management
+
+Jobs are linked to clients and include:
+
+- title
+- status
+- priority
+- due date
+- description
+- internal notes
+
+Overdue jobs are visually highlighted when not completed.
+
+---
+
 ## ⚡ Quick Start
 
 Clone the repository:
@@ -69,43 +112,6 @@ Open in your browser:
 
 ---
 
-
----
-
-## 📸 Example
-
-![Start](images/screenshot.png)
-
-### 📊 Dashboard
-
-Central dashboard displaying operational metrics such as total clients, job counts, and upcoming deadlines.
-
----
-
-![Start](images/screenshot3.png)
-
-### 👥 Client Management
-
-Clients can be created, edited, searched, and deleted through a clean CRUD interface.
-
----
-
-![Start](images/screenshot2.png)
-
-### 📋 Job Management
-
-Jobs are linked to clients and include:
-
-- title
-- status
-- priority
-- due date
-- description
-- internal notes
-
-Overdue jobs are visually highlighted when not completed.
-
----
 
 ## 🚀 Features
 
