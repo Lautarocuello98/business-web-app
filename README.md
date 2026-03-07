@@ -69,6 +69,9 @@ Open in your browser:
 
 ---
 
+
+---
+
 ## 📸 Example
 
 ![Start](images/screenshot.png)
@@ -79,11 +82,15 @@ Central dashboard displaying operational metrics such as total clients, job coun
 
 ---
 
+![Start](images/screenshot3.png)
+
 ### 👥 Client Management
 
 Clients can be created, edited, searched, and deleted through a clean CRUD interface.
 
 ---
+
+![Start](images/screenshot2.png)
 
 ### 📋 Job Management
 
