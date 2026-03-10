@@ -29,6 +29,14 @@ It is designed as a **portfolio-ready Django application demonstrating real inte
 
 ---
 
+## 🎬 Demo
+
+A quick overview of how the system works.
+
+https://youtu.be/yuOwXCc5wq4
+
+---
+
 ## ⚡ Quick Start
 
 Clone the repository:
