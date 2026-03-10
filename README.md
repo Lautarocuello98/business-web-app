@@ -1,4 +1,4 @@
-# 🏢 Business Web Manager
+# 🏢 Business Web App
 
 > Django web application for managing internal business workflows including clients, jobs, priorities, and operational metrics.
 
@@ -10,7 +10,7 @@
 
 ## ✨ Overview
 
-Business Web Manager is a Django-based web application designed to manage internal operational workflows for small teams or businesses.
+Business Web App is a Django-based web application designed to manage internal operational workflows for small teams or businesses.
 
 The platform centralizes **client records, job management, task priorities, and operational tracking** in a single dashboard interface.
 
